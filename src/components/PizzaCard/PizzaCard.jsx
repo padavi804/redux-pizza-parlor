@@ -4,10 +4,10 @@ function PizzaCard(props) {
 
     return (
         <>
-        <img src={pizza.image_path} /> 
-        <li key={pizza.id}>
-            {pizza.name}
-        </li>
+            <img src={pizza.image_path} /> 
+            <h1 key={pizza.id}>
+                {pizza.name}
+            </h1>
         </>
     )
 

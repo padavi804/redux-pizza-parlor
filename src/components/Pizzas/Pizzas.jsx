@@ -5,7 +5,7 @@ function Pizzas(props) {
 
     return (
         <>
-            <ul>
+            
             {
                 
                 pizzaList.map(
@@ -14,7 +14,7 @@ function Pizzas(props) {
                     )
                 )
             }
-            </ul>
+            
         </>
     )
 }
