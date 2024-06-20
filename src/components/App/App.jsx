@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
+import Pizzas from '../Pizzas/Pizzas';
+
 function App() {
   const [pizzaList, setPizzaList] = useState([]);
   useEffect(() => {
@@ -33,7 +35,8 @@ function App() {
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
       {/* Pizzas go here for now */}
-      {JSON.stringify(pizzaList)}
+      
+      <Pizzas pizzaList={pizzaList} />
     </div>
   );
 }
