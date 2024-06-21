@@ -6,6 +6,8 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import Button from '@mui/material/Button';
+
 
 function Customer() {
     return (
@@ -37,6 +39,8 @@ function Customer() {
                         <FormControlLabel value="delivery" control={<Radio />} label="Delivery" />
                         </RadioGroup>
                 </FormControl>
+                <br />
+                <Button variant="contained" color="error">Next</Button>
             </Box>
 
         </div>
