@@ -10,7 +10,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 
-
+// must be passed GET order route
 function Customer() {
 
 let [customerName, setCustomerName] = useState('');
@@ -56,14 +56,15 @@ const addCustomer = (evt) => {
                 sx={{'& > :not(style)': { m: 1, width: '25ch' },}}
                 noValidate
                 autoComplete="off"
+                onSubmit={addCustomer}
             >
-                <TextField id="outlined-basic" label="Name" variant="outlined" />
+                <TextField id="outlined-basic" label="Name" variant="outlined" onChange={(evt) => setCustomerName(evt.target.value)} value={customerName}/>
                 <br />
-                <TextField id="outlined-basic" label="Street Address" variant="outlined" />
+                <TextField id="outlined-basic" label="Street Address" variant="outlined" onChange={(evt) => setCustomerAddress(evt.target.value)} value={customerAddress}/>
                 <br />
-                <TextField id="outlined-basic" label="City" variant="outlined" />
+                <TextField id="outlined-basic" label="City" variant="outlined" onChange={(evt) => setCustomerCity(evt.target.value)} value={customerCity}/>
                 <br />
-                <TextField id="outlined-basic" label="ZIP" variant="outlined" />
+                <TextField id="outlined-basic" label="ZIP" variant="outlined" onChange={(evt) => setCustomerZip(evt.target.value)} value={customerZip}/>
                 <br />
                 <FormControl>
                     <FormLabel id="pickUpDelivery"></FormLabel>
@@ -76,7 +77,7 @@ const addCustomer = (evt) => {
                         </RadioGroup>
                 </FormControl>
                 <br />
-                <Button variant="contained" color="error">Next</Button>
+                <Button variant="contained" color="error" type="submit">Next</Button>
             </Box>
 
         </div>
