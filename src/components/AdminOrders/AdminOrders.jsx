@@ -1,7 +1,9 @@
 import React from "react";
 
-function AdminOrders(){
-  return <div></div>  
+function AdminOrders() {
+    return <div>
+
+    </div>
 }
 
 export default AdminOrders
