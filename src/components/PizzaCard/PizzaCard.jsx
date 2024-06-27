@@ -1,13 +1,16 @@
+import { Box } from "@mui/material";
 
 function PizzaCard(props) {
     let pizza = props.pizza
 
     return (
         <>
+        <Box sx={{ '& > :not(style)': { m: 1, width: '25ch' }, }}>
             <img src={pizza.image_path} /> 
-            <h1 key={pizza.id}>
+            <h4 key={pizza.id}>
                 {pizza.name}
-            </h1>
+            </h4>
+        </Box>
         </>
     )
 
