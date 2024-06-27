@@ -7,7 +7,7 @@ import './App.css';
 import Pizzas from '../Pizzas/Pizzas';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import AdminOrders from '../AdminOrders/AdminOrders';
-import Customer from './Customer/Customer.jsx';
+import Customer from '../Customer/Customer.jsx';
 
 function App() {
   const [pizzaList, setPizzaList] = useState([]);
@@ -39,8 +39,9 @@ function App() {
   
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
+      <Route path='/' exact>
   <Pizzas pizzaList={pizzaList} />
-
+</Route>
       <Route path='/admin' >
           <AdminOrders />
         </Route>
