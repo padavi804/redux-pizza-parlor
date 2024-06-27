@@ -5,7 +5,8 @@ import axios from 'axios';
 import './App.css';
 
 import Pizzas from '../Pizzas/Pizzas';
-
+import { HashRouter as Router, Route } from 'react-router-dom';
+import AdminOrders from '../AdminOrders/AdminOrders';
 function App() {
   const [pizzaList, setPizzaList] = useState([]);
   useEffect(() => {
@@ -34,10 +35,17 @@ function App() {
   
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
-      {/* Pizzas go here for now */}
-      
+  
       <Pizzas pizzaList={pizzaList} />
+      <Route path='/admin' >
+          <AdminOrders />
+        </Route>
     </div>
+
+
+
+
+    
   );
 }
 
