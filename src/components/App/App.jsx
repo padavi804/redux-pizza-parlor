@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import Customer from './Customer/Customer.jsx'
+import AdminOrders from '../AdminOrders/AdminOrders';
+import Customer from './Customer/Customer.jsx';
 
 function App() {
 
@@ -15,12 +16,15 @@ function App() {
   
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
-  
-  <Route path='/customer'>
+      <Route path='/admin' >
+          <AdminOrders />
+        </Route>
+
+        <Route path='/customer'>
   {/* localhost:5173/#/customer */}
     <Customer />
   </Route>
-
+  
     </div>
     </Router>
   );
