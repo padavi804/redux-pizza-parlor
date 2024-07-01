@@ -9,7 +9,45 @@ import Paper from '@mui/material/Paper';
 
 
 function Checkout () {
-
+    const data =[
+        {
+         customer_name:"john",
+         address: '123 Main St',
+         city:'Minneapolis',
+         state: 'MN',
+         type: 'deliver',
+         pizza_name:"cheese",
+         price: 12.99,
+         total:40
+        }     
+         ]
+       return (
+         <TableContainer component={Paper}>
+           <Table sx={{ minWidth: 650 }} aria-label="simple table">
+             <TableHead>
+               <TableRow>
+                 <TableCell>Pizza</TableCell>               
+                 <TableCell align="right">Cost</TableCell>
+                 
+               </TableRow>
+             </TableHead>
+             <TableBody>
+               {data.map((row) => (
+                 <TableRow
+                   key={row.name}
+                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                 >
+                   <TableCell component="th" scope="row">
+                     {row.pizza_name}
+                   </TableCell>
+                   <TableCell align="right">{row.total}</TableCell>
+                  
+                 </TableRow>
+               ))}
+             </TableBody>
+           </Table>
+         </TableContainer>
+       );
 
 
 
