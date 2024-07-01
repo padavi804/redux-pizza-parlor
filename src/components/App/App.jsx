@@ -8,7 +8,8 @@ import Pizzas from '../Pizzas/Pizzas';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import AdminOrders from '../AdminOrders/AdminOrders';
 import Customer from '../Customer/Customer.jsx';
-import Checkout from '../Checkout/Checkout.jsx'
+import Checkout from '../Checkout/Checkout.jsx';
+import ThankYou from '../ThankYou/ThankYou.jsx';
 
 
 function App() {
@@ -54,6 +55,10 @@ function App() {
         <Route path='/customer'>
           {/* localhost:5173/#/customer */}
           <Customer />
+        </Route>
+
+        <Route path='/thankyou' >
+          <ThankYou />
         </Route>
 
       </div>
