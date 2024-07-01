@@ -34,6 +34,7 @@ function Checkout() {
       total: 0
     }
   ]
+  
   return (
     <>
       <TableContainer component={Paper}>
