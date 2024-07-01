@@ -9,6 +9,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
+import Header from '../../Header/Header';
 
 // must be passed GET order route
 function Customer() {
@@ -49,7 +50,7 @@ function Customer() {
 
 
     return (
-        <div>
+        <><Header /><div>
             <h2>Step 2: Customer Information</h2>
             <Box
                 component="form"
@@ -71,7 +72,7 @@ function Customer() {
                     <RadioGroup
                         row
                         aria-labelledby="pickUpDelivery"
-                        name="pickUpDelivery" >
+                        name="pickUpDelivery">
                         <FormControlLabel value="pickup" control={<Radio />} label="Pick-Up" />
                         <FormControlLabel value="delivery" control={<Radio />} label="Delivery" />
                     </RadioGroup>
@@ -79,7 +80,7 @@ function Customer() {
                 <br />
                 <Button variant="contained" color="error" type="submit">Next</Button>
             </Box>
-        </div>
+        </div></>
     )
 }
 export default Customer;
