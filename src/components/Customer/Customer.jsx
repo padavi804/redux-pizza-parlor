@@ -23,6 +23,7 @@ function Customer() {
 
     const history = useHistory();
 
+    
     const addCustomer = (evt) => {
         evt.preventDefault();
         console.log(`Order for ${customerName} is being added`)
@@ -36,7 +37,13 @@ function Customer() {
                 city: customerCity,
                 zip: customerZip,
                 type: type,
-                total: total
+                total: total,
+                pizzas: [{
+                    id: 1,
+                    quantity: 1},{
+                        id: 2,
+                        quantity: 1
+                }]
             }
         })
             .then(response => {
@@ -53,10 +60,12 @@ function Customer() {
             })
 
     }
+const handleClick = (evt) => {
+        evt.preventDefault();
 
-const handleClick = () => {
     history.push('/checkout');
 }
+
 
     return (
         <div>
@@ -89,7 +98,9 @@ const handleClick = () => {
                     </RadioGroup>
                 </FormControl>
                 <br />
-                <Button variant="contained" color="primary" type="submit" onClick={handleClick}>Next</Button>
+                <Button variant="contained" color="primary" type="submit" 
+                onClick={handleClick}
+                >Next</Button>
             </Box>
         </div>
     )
