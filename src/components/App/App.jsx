@@ -39,6 +39,8 @@ function App() {
         <header className='App-header'>
           <h1 className='App-title'>Prime Pizza</h1>
         </header>
+      
+  <Pizzas pizzaList={pizzaList} />
 
         <img src='images/pizza_photo.png' />
         <p>Pizza is great.</p>

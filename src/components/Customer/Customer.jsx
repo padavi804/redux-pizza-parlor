@@ -11,6 +11,7 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import { useHistory } from 'react-router-dom';
 
+import Header from '../../Header/Header';
 
 function Customer() {
 
@@ -23,7 +24,7 @@ function Customer() {
 
     const history = useHistory();
 
-    
+
     const addCustomer = (evt) => {
         evt.preventDefault();
         console.log(`Order for ${customerName} is being added`)
@@ -40,19 +41,20 @@ function Customer() {
                 total: total,
                 pizzas: [{
                     id: 1,
-                    quantity: 1},{
-                        id: 2,
-                        quantity: 1
+                    quantity: 1
+                }, {
+                    id: 2,
+                    quantity: 1
                 }]
             }
         })
             .then(response => {
-                console.log('Customer info received', response);                
+                console.log('Customer info received', response);
                 setCustomerName('');
                 setCustomerAddress('');
                 setCustomerCity('');
                 setCustomerZip('');
-                setType('pickup');                
+                setType('pickup');
             })
             .catch(error => {
                 alert('Customer information not received');
@@ -60,15 +62,16 @@ function Customer() {
             })
 
     }
-const handleClick = (evt) => {
+    const handleClick = (evt) => {
         evt.preventDefault();
 
-    history.push('/checkout');
-}
+        history.push('/checkout');
+    }
 
 
     return (
-        <div>
+        <><div>
+            <Header />
             <h2>Step 2: Customer Information</h2>
             <Box
                 component="form"
@@ -90,19 +93,19 @@ const handleClick = (evt) => {
                     <RadioGroup
                         row
                         aria-labelledby="pickUpDelivery"
-                        name="pickUpDelivery" 
-                        value= {type}
+                        name="pickUpDelivery"
+                        value={type}
                         onChange={(evt) => setType(evt.target.value)}>
                         <FormControlLabel value="pickup" control={<Radio />} label="Pick-Up" />
                         <FormControlLabel value="delivery" control={<Radio />} label="Delivery" />
                     </RadioGroup>
                 </FormControl>
                 <br />
-                <Button variant="contained" color="primary" type="submit" 
-                onClick={handleClick}
+                <Button variant="contained" color="primary" type="submit"
+                    onClick={handleClick}
                 >Next</Button>
             </Box>
-        </div>
+        </div></>
     )
 }
 export default Customer;
