@@ -9,18 +9,23 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
+import { useHistory } from 'react-router-dom';
 
-// must be passed GET order route
+
 function Customer() {
 
     let [customerName, setCustomerName] = useState('');
     let [customerAddress, setCustomerAddress] = useState('');
     let [customerCity, setCustomerCity] = useState('');
     let [customerZip, setCustomerZip] = useState('');
+    let [type, setType] = useState ('pickup');
+    let total = 10;
+
+    const history = useHistory();
 
     const addCustomer = (evt) => {
         evt.preventDefault();
-        console.log(`Adding order for ${customerName} is being added`)
+        console.log(`Order for ${customerName} is being added`)
 
         axios({
             method: 'POST',
@@ -29,16 +34,18 @@ function Customer() {
                 customer_name: customerName,
                 street_address: customerAddress,
                 city: customerCity,
-                zip: customerZip
+                zip: customerZip,
+                type: type,
+                total: total
             }
         })
             .then(response => {
-                console.log('Customer info received', response);
-                // fetchList(); set GET route info when merged
+                console.log('Customer info received', response);                
                 setCustomerName('');
                 setCustomerAddress('');
                 setCustomerCity('');
                 setCustomerZip('');
+                setType('pickup');                
             })
             .catch(error => {
                 alert('Customer information not received');
@@ -47,6 +54,9 @@ function Customer() {
 
     }
 
+const handleClick = () => {
+    history.push('/checkout');
+}
 
     return (
         <div>
@@ -71,13 +81,15 @@ function Customer() {
                     <RadioGroup
                         row
                         aria-labelledby="pickUpDelivery"
-                        name="pickUpDelivery" >
+                        name="pickUpDelivery" 
+                        value= {type}
+                        onChange={(evt) => setType(evt.target.value)}>
                         <FormControlLabel value="pickup" control={<Radio />} label="Pick-Up" />
                         <FormControlLabel value="delivery" control={<Radio />} label="Delivery" />
                     </RadioGroup>
                 </FormControl>
                 <br />
-                <Button variant="contained" color="error" type="submit">Next</Button>
+                <Button variant="contained" color="primary" type="submit" onClick={handleClick}>Next</Button>
             </Box>
         </div>
     )
