@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 
@@ -15,30 +16,73 @@ import { useHistory } from 'react-router-dom';
 
 function Checkout() {
 
+  const customerName = useSelector (store => store.customerName)
+  const customerAddress = useSelector (store => store.customerAddress)
+  const customerCity = useSelector (store => store.customerCity)
+  const customerZip = useSelector (store => store.customerZip)
+  const type = useSelector (store => store.type)
+
+
+
+
   const history = useHistory();
 
   const handleClick = () => {
     history.push('/ThankYou');
   }
 
-
-  const data = [
-    {
-      customer_name: '',
-      address: '',
-      city: '',
-      state: '',
-      type: '',
-      pizza_name: '',
-      price: 0,
-      total: 0
-    }
-  ]
+    //     axios({
+    //         method: 'POST',
+    //         url: '/api/order',
+    //         data: {
+    //             customer_name: customerName,
+    //             street_address: customerAddress,
+    //             city: customerCity,
+    //             zip: customerZip,
+    //             type: type,
+    //             total: total,
+    //             pizzas: [{
+    //                 id: 1,
+    //                 quantity: 1
+    //             }, {
+    //                 id: 2,
+    //                 quantity: 1
+    //             }]
+    //         }
+    //     })
+    //         .then(response => {
+    //             console.log('Customer info received', response);
+    //             setCustomerName('');
+    //             setCustomerAddress('');
+    //             setCustomerCity('');
+    //             setCustomerZip('');
+    //             setType('pickup');
+    //         })
+    //         .catch(error => {
+    //             alert('Customer information not received');
+    //             console.log(error);
+    //         })
+  // const data = [
+  //   {
+  //     customer_name: '',
+  //     address: '',
+  //     city: '',
+  //     state: '',
+  //     type: '',
+  //     pizza_name: '',
+  //     price: 0,
+  //     total: 0
+  //   }
+  // ]
 
   return (
     <>
 <h2>Checkout</h2>
-    <p>{data.customer_name}</p>
+    <p>{customerName}</p>
+    <p>{customerAddress}</p>
+    <p>{customerCity}</p>
+    <p>{customerZip}</p>
+    <p>{type}</p>
 
 
       <TableContainer component={Paper}>
@@ -49,7 +93,7 @@ function Checkout() {
               <TableCell align="right">Price</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          {/* <TableBody>
             {data.map((data) => (
               <TableRow
                 key={data.id}
@@ -61,7 +105,7 @@ function Checkout() {
                 <TableCell align="right">{data.price}</TableCell>
               </TableRow>
             ))}
-          </TableBody>
+          </TableBody> */}
         </Table>
       </TableContainer>
 

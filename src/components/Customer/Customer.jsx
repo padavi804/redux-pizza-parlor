@@ -35,64 +35,32 @@ function Customer() {
         dispatch({ type: 'SET_CUSTOMER_ZIP', payload: customerZip });
         dispatch({ type: 'SET_TYPE', payload: type });
 
+        history.push('/checkout');
 
-        // setCurrentSupport('');
+    }
     
 
     // const addCustomer = (evt) => {
     //     evt.preventDefault();
     //     console.log(`Order for ${customerName} is being added`)
 
-    //     axios({
-    //         method: 'POST',
-    //         url: '/api/order',
-    //         data: {
-    //             customer_name: customerName,
-    //             street_address: customerAddress,
-    //             city: customerCity,
-    //             zip: customerZip,
-    //             type: type,
-    //             total: total,
-    //             pizzas: [{
-    //                 id: 1,
-    //                 quantity: 1
-    //             }, {
-    //                 id: 2,
-    //                 quantity: 1
-    //             }]
-    //         }
-    //     })
-    //         .then(response => {
-    //             console.log('Customer info received', response);
-    //             setCustomerName('');
-    //             setCustomerAddress('');
-    //             setCustomerCity('');
-    //             setCustomerZip('');
-    //             setType('pickup');
-    //         })
-    //         .catch(error => {
-    //             alert('Customer information not received');
-    //             console.log(error);
-    //         })
 
-    }
-    const handleClick = (evt) => {
-        evt.preventDefault();
 
-        history.push('/checkout');
-    }
+    
+   
 
 
     return (
         <><div>
             <Header />
             <h2>Step 2: Customer Information</h2>
+            <form onSubmit={(e) => addCustomer(e)}>
             <Box
                 component="form"
                 sx={{ '& > :not(style)': { m: 1, width: '25ch' }, }}
                 noValidate
                 autoComplete="off"
-                onSubmit={addCustomer}
+                
             >
                 <TextField id="outlined-basic" label="Name" variant="outlined" onChange={(evt) => setCustomerName(evt.target.value)} value={customerName} />
                 <br />
@@ -116,9 +84,9 @@ function Customer() {
                 </FormControl>
                 <br />
                 <Button variant="contained" color="primary" type="submit"
-                    onClick={handleClick}
                 >Next</Button>
             </Box>
+            </form>
         </div></>
     )
 }
