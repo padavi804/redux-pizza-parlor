@@ -9,55 +9,58 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
-import Header from '../../Header/Header';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
 
-// must be passed GET order route
+import Header from '../Header/Header';
+
 function Customer() {
 
     let [customerName, setCustomerName] = useState('');
     let [customerAddress, setCustomerAddress] = useState('');
     let [customerCity, setCustomerCity] = useState('');
     let [customerZip, setCustomerZip] = useState('');
+    let [type, setType] = useState ('pickup');
+    let total = 10;
 
-    const addCustomer = (evt) => {
-        evt.preventDefault();
-        console.log(`Adding order for ${customerName} is being added`)
+    const history = useHistory();
 
-        axios({
-            method: 'POST',
-            url: '/api/order',
-            data: {
-                customer_name: customerName,
-                street_address: customerAddress,
-                city: customerCity,
-                zip: customerZip
-            }
-        })
-            .then(response => {
-                console.log('Customer info received', response);
-                // fetchList(); set GET route info when merged
-                setCustomerName('');
-                setCustomerAddress('');
-                setCustomerCity('');
-                setCustomerZip('');
-            })
-            .catch(error => {
-                alert('Customer information not received');
-                console.log(error);
-            })
+    const dispatch = useDispatch();
+    const addCustomer = (e) => {
+        e.preventDefault();
+        console.log('support submitted');
+        dispatch({ type: 'SET_CUSTOMER_NAME', payload: customerName });
+        dispatch({ type: 'SET_CUSTOMER_ADDRESS', payload: customerAddress });
+        dispatch({ type: 'SET_CUSTOMER_CITY', payload: customerCity });
+        dispatch({ type: 'SET_CUSTOMER_ZIP', payload: customerZip });
+        dispatch({ type: 'SET_TYPE', payload: type });
+
+        history.push('/checkout');
 
     }
+    
+
+    // const addCustomer = (evt) => {
+    //     evt.preventDefault();
+    //     console.log(`Order for ${customerName} is being added`)
+
+
+
+    
+   
 
 
     return (
-        <><Header /><div>
+        <><div>
+            <Header />
             <h2>Step 2: Customer Information</h2>
+            {/* <form > */}
             <Box
                 component="form"
                 sx={{ '& > :not(style)': { m: 1, width: '25ch' }, }}
                 noValidate
                 autoComplete="off"
-                onSubmit={addCustomer}
+                onSubmit={(e) => addCustomer(e)}
             >
                 <TextField id="outlined-basic" label="Name" variant="outlined" onChange={(evt) => setCustomerName(evt.target.value)} value={customerName} />
                 <br />
@@ -72,14 +75,18 @@ function Customer() {
                     <RadioGroup
                         row
                         aria-labelledby="pickUpDelivery"
-                        name="pickUpDelivery">
+                        name="pickUpDelivery"
+                        value={type}
+                        onChange={(evt) => setType(evt.target.value)}>
                         <FormControlLabel value="pickup" control={<Radio />} label="Pick-Up" />
                         <FormControlLabel value="delivery" control={<Radio />} label="Delivery" />
                     </RadioGroup>
                 </FormControl>
                 <br />
-                <Button variant="contained" color="error" type="submit">Next</Button>
+                <Button variant="contained" color="primary" type="submit"
+                >Next</Button>
             </Box>
+            {/* </form> */}
         </div></>
     )
 }
