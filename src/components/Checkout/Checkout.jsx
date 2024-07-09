@@ -1,3 +1,4 @@
+import './Checkout.css';
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 
 
@@ -29,39 +31,40 @@ function Checkout() {
 
   const handleClick = () => {
     history.push('/ThankYou');
-  }
+  
 
-    //     axios({
-    //         method: 'POST',
-    //         url: '/api/order',
-    //         data: {
-    //             customer_name: customerName,
-    //             street_address: customerAddress,
-    //             city: customerCity,
-    //             zip: customerZip,
-    //             type: type,
-    //             total: total,
-    //             pizzas: [{
-    //                 id: 1,
-    //                 quantity: 1
-    //             }, {
-    //                 id: 2,
-    //                 quantity: 1
-    //             }]
-    //         }
-    //     })
-    //         .then(response => {
-    //             console.log('Customer info received', response);
-    //             setCustomerName('');
-    //             setCustomerAddress('');
-    //             setCustomerCity('');
-    //             setCustomerZip('');
-    //             setType('pickup');
-    //         })
-    //         .catch(error => {
-    //             alert('Customer information not received');
-    //             console.log(error);
-    //         })
+        axios({
+            method: 'POST',
+            url: '/api/order',
+            data: {
+                customer_name: customerName,
+                street_address: customerAddress,
+                city: customerCity,
+                zip: customerZip,
+                type: type,
+                total: 25,
+                pizzas: [{
+                    id: 1,
+                    quantity: 1
+                }, {
+                    id: 2,
+                    quantity: 1
+                }]
+            }
+        })
+            .then(response => {
+                console.log('Customer info received', response);
+                // setCustomerName('');
+                // setCustomerAddress('');
+                // setCustomerCity('');
+                // setCustomerZip('');
+                // setType('pickup');
+            })
+            .catch(error => {
+                alert('Customer information not received');
+                console.log(error);
+            })
+          }
   // const data = [
   //   {
   //     customer_name: '',
@@ -78,12 +81,13 @@ function Checkout() {
   return (
     <>
 <h2>Checkout</h2>
+<div className= "Contact" >
     <p>{customerName}</p>
     <p>{customerAddress}</p>
     <p>{customerCity}</p>
     <p>{customerZip}</p>
     <p>{type}</p>
-
+</div>
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">

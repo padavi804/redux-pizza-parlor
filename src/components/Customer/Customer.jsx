@@ -54,13 +54,13 @@ function Customer() {
         <><div>
             <Header />
             <h2>Step 2: Customer Information</h2>
-            <form onSubmit={(e) => addCustomer(e)}>
+            {/* <form > */}
             <Box
                 component="form"
                 sx={{ '& > :not(style)': { m: 1, width: '25ch' }, }}
                 noValidate
                 autoComplete="off"
-                
+                onSubmit={(e) => addCustomer(e)}
             >
                 <TextField id="outlined-basic" label="Name" variant="outlined" onChange={(evt) => setCustomerName(evt.target.value)} value={customerName} />
                 <br />
@@ -86,7 +86,7 @@ function Customer() {
                 <Button variant="contained" color="primary" type="submit"
                 >Next</Button>
             </Box>
-            </form>
+            {/* </form> */}
         </div></>
     )
 }
