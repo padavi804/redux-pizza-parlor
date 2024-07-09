@@ -37,6 +37,10 @@ function Checkout() {
 
   return (
     <>
+<h2>Checkout</h2>
+    <p>{data.customer_name}</p>
+
+
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -48,7 +52,7 @@ function Checkout() {
           <TableBody>
             {data.map((data) => (
               <TableRow
-                key={data.name}
+                key={data.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">

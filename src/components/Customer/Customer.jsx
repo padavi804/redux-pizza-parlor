@@ -10,8 +10,9 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
 
-import Header from '../../Header/Header';
+import Header from '../Header/Header';
 
 function Customer() {
 
@@ -24,42 +25,55 @@ function Customer() {
 
     const history = useHistory();
 
+    const dispatch = useDispatch();
+    const addCustomer = (e) => {
+        e.preventDefault();
+        console.log('support submitted');
+        dispatch({ type: 'SET_CUSTOMER_NAME', payload: customerName });
+        dispatch({ type: 'SET_CUSTOMER_ADDRESS', payload: customerAddress });
+        dispatch({ type: 'SET_CUSTOMER_CITY', payload: customerCity });
+        dispatch({ type: 'SET_CUSTOMER_ZIP', payload: customerZip });
+        dispatch({ type: 'SET_TYPE', payload: type });
 
-    const addCustomer = (evt) => {
-        evt.preventDefault();
-        console.log(`Order for ${customerName} is being added`)
 
-        axios({
-            method: 'POST',
-            url: '/api/order',
-            data: {
-                customer_name: customerName,
-                street_address: customerAddress,
-                city: customerCity,
-                zip: customerZip,
-                type: type,
-                total: total,
-                pizzas: [{
-                    id: 1,
-                    quantity: 1
-                }, {
-                    id: 2,
-                    quantity: 1
-                }]
-            }
-        })
-            .then(response => {
-                console.log('Customer info received', response);
-                setCustomerName('');
-                setCustomerAddress('');
-                setCustomerCity('');
-                setCustomerZip('');
-                setType('pickup');
-            })
-            .catch(error => {
-                alert('Customer information not received');
-                console.log(error);
-            })
+        // setCurrentSupport('');
+    
+
+    // const addCustomer = (evt) => {
+    //     evt.preventDefault();
+    //     console.log(`Order for ${customerName} is being added`)
+
+    //     axios({
+    //         method: 'POST',
+    //         url: '/api/order',
+    //         data: {
+    //             customer_name: customerName,
+    //             street_address: customerAddress,
+    //             city: customerCity,
+    //             zip: customerZip,
+    //             type: type,
+    //             total: total,
+    //             pizzas: [{
+    //                 id: 1,
+    //                 quantity: 1
+    //             }, {
+    //                 id: 2,
+    //                 quantity: 1
+    //             }]
+    //         }
+    //     })
+    //         .then(response => {
+    //             console.log('Customer info received', response);
+    //             setCustomerName('');
+    //             setCustomerAddress('');
+    //             setCustomerCity('');
+    //             setCustomerZip('');
+    //             setType('pickup');
+    //         })
+    //         .catch(error => {
+    //             alert('Customer information not received');
+    //             console.log(error);
+    //         })
 
     }
     const handleClick = (evt) => {
