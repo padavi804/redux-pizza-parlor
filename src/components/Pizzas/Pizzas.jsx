@@ -6,8 +6,7 @@ function Pizzas(props) {
     return (
         <>
             
-            {
-                
+            {             
                 pizzaList.map(
                     (pizza) => (
                         <PizzaCard pizza={pizza} />

@@ -39,18 +39,17 @@ function App() {
   
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
-  <Route path='/' exact >
+    <Route path='/' exact >
       <Pizzas pizzaList={pizzaList} />
-   </Route>
+    </Route>
 
-      <Route path='/admin' >
-          <AdminOrders />
-      </Route>
+    <Route path='/admin' >
+        <AdminOrders />
+    </Route>
 
-        <Route path='/customer'>
-  {/* localhost:5173/#/customer */}
-    <Customer />
-  </Route>
+    <Route path='/customer'>
+      <Customer />
+    </Route>
   
     </div>
    </Router>        
