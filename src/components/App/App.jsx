@@ -10,6 +10,7 @@ import AdminOrders from '../AdminOrders/AdminOrders';
 import Customer from '../Customer/Customer.jsx';
 import Checkout from '../Checkout/Checkout.jsx';
 import ThankYou from '../ThankYou/ThankYou.jsx';
+import Header from '../Header/Header';
 
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
       <div className='App'>
 
         <header className='App-header'>
-          <h1 className='App-title'>Prime Pizza</h1>
+          <Header />
         </header>
       
   <Pizzas pizzaList={pizzaList} />

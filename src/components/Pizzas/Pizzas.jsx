@@ -1,4 +1,4 @@
-import Header from '../Header/Header';
+
 import PizzaCard from '../PizzaCard/PizzaCard';
 
 function Pizzas(props) {
@@ -7,7 +7,7 @@ function Pizzas(props) {
     return (
 
         <>
-            <Header />
+            
             {
 
                 pizzaList.map(

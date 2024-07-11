@@ -46,6 +46,8 @@ const type = (state = '', action) => {
 
 
 
+
+
 /** Create store */
 const storeInstance = createStore(
     combineReducers(
