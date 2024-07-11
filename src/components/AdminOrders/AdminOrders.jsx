@@ -11,14 +11,7 @@ import axios from 'axios';
 
 
 export default function AdminOrders() {
-    const data =[
-   {
-    customer_name:"john",
-    time:new Date(),
-    type:"cheese",
-    total:40
-   }     
-    ]
+   
     const[orders,setorders]=React.useState([])
     const fetchorders=()=>{
         axios({
