@@ -35,16 +35,9 @@ function App() {
 
   return (
     <Router>
-      <div className='App'>
-
-        <header className='App-header'>
-          <Header />
-        </header>
-      
-  <Pizzas pizzaList={pizzaList} />
-
-        <img src='images/pizza_photo.png' />
-        <p>Pizza is great.</p>
+      <div className='App'>        
+        <Header />
+    
         <Route path='/' exact>
           <Pizzas pizzaList={pizzaList} />
         </Route>

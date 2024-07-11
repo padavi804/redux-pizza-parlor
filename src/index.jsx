@@ -44,6 +44,16 @@ const type = (state = '', action) => {
   return state;
 }
 
+const pizzaOrdered = (state = {name: '', price: 0}, action) => {
+    if(action.type === 'ADD_PIZZA') {
+        return {...state,
+                name: action.payload.name,
+                price: action.payload.price
+        }
+    }
+    return state
+}
+
 
 
 
@@ -52,7 +62,12 @@ const type = (state = '', action) => {
 const storeInstance = createStore(
     combineReducers(
         {
-          customerName, customerAddress, customerCity, customerZip, type
+          customerName, 
+          customerAddress, 
+          customerCity, 
+          customerZip, 
+          type,
+          pizzaOrdered
         }
     ),
     // Setup logger
