@@ -16,16 +16,16 @@ function PizzaCard(props) {
         
         let newOrderTotal = 0;
          for(let pizza of pizzaCart){
-           newOrderTotal += Number(pizza.price);
+           newOrderTotal += Number(pizzaToAdd.price);
            
         }
-        setOrderTotal(newOrderTotal);
-        dispatch({type: 'SET_TOTAL', payload: newOrderTotal});
-        dispatch({type: 'ADD_PIZZA', payload: {name: pizzaToAdd.name, price: pizzaToAdd.price}});
         
+        
+        dispatch({type: 'ADD_PIZZA', payload: {name: pizzaToAdd.name, price: pizzaToAdd.price}});
+        dispatch({type: 'SET_TOTAL', payload: newOrderTotal});
+        setOrderTotal(newOrderTotal);
         console.log('Order Total', orderTotal);
-        //setOrderTotal();
-        //console.log('pizzaToadd.price', pizzaToAdd.price)     
+        
         
     }
    
@@ -33,7 +33,7 @@ function PizzaCard(props) {
         <>
         <Box sx={{ '& > :not(style)': { m: 1 }, }}>
             <img src={pizza.image_path} /> 
-            <h4 key={pizza.id}>{pizza.name}</h4>
+            <h4>{pizza.name}</h4>
             <h6>{pizza.description}</h6>
             <h6>{pizza.price}</h6>
             <button
