@@ -49,7 +49,9 @@ const pizzaCart = (state = [], action) => {
         return [...state,
                 { 
                     name: action.payload.name,
-                    price: action.payload.price
+                    price: action.payload.price,
+                    id: action.payload.id,
+                    quantity: 1,
                 }]
     }
     return state
