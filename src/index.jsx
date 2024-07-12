@@ -55,15 +55,14 @@ const pizzaCart = (state = [], action) => {
     return state
 }
 
-// const orderTotal = (state = 0, action) => {
+const orderTotal = (state = 0, action) => {
     
-//     if(action.type === 'SET_TOTAL') {
-//         return {...state,
-//         price: action.payload}
-//     }
+    if(action.type === 'SET_TOTAL') {
+        return action.payload
+    }
     
-//     return state
-// }
+    return state
+}
 
 
 
@@ -78,8 +77,8 @@ const storeInstance = createStore(
           customerCity, 
           customerZip, 
           type,
-          pizzaCart
-          //orderTotal
+          pizzaCart,
+          orderTotal
         }
     ),
     // Setup logger

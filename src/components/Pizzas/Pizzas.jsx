@@ -24,12 +24,12 @@ function Pizzas(props) {
     return (
 
         <>
-            
+            <div className='pizza-list'>
             {pizzaList.map((pizza) => (<PizzaCard pizza={pizza} />))}
-            <form >
+            <form>
                 <button type="submit">NEXT</button>
            </form>
-
+            </div>
         </>
     )
 }
