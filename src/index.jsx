@@ -44,15 +44,26 @@ const type = (state = '', action) => {
   return state;
 }
 
-const pizzaOrdered = (state = {name: '', price: 0}, action) => {
+const pizzaCart = (state = [], action) => {
     if(action.type === 'ADD_PIZZA') {
-        return {...state,
-                name: action.payload.name,
-                price: action.payload.price
-        }
+        return [...state,
+                { 
+                    name: action.payload.name,
+                    price: action.payload.price
+                }]
     }
     return state
 }
+
+// const orderTotal = (state = 0, action) => {
+    
+//     if(action.type === 'SET_TOTAL') {
+//         return {...state,
+//         price: action.payload}
+//     }
+    
+//     return state
+// }
 
 
 
@@ -67,7 +78,8 @@ const storeInstance = createStore(
           customerCity, 
           customerZip, 
           type,
-          pizzaOrdered
+          pizzaCart
+          //orderTotal
         }
     ),
     // Setup logger
