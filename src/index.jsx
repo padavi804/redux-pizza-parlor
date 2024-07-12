@@ -67,9 +67,6 @@ const orderTotal = (state = 0, action) => {
 }
 
 
-
-
-
 /** Create store */
 const storeInstance = createStore(
     combineReducers(
