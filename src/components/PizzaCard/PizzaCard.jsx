@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 function PizzaCard(props) {
     let pizza = props.pizza;
     const dispatch = useDispatch();
-    //let [pizzaToAdd, setPizzaToAdd] = useState({name: pizza.name, price: pizza.price});
     let [orderTotal, setOrderTotal] = useState(0);
     const pizzaCart = useSelector(store => store.pizzaCart);
 
