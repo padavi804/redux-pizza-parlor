@@ -23,6 +23,7 @@ function Checkout() {
   const customerCity = useSelector (store => store.customerCity)
   const customerZip = useSelector (store => store.customerZip)
   const type = useSelector (store => store.type)
+  const pizzaCart = useSelector(store => store.pizzaCart)
 
 
 
@@ -97,19 +98,19 @@ function Checkout() {
               <TableCell align="right">Price</TableCell>
             </TableRow>
           </TableHead>
-          {/* <TableBody>
-            {data.map((data) => (
+           <TableBody>
+            {pizzaCart.map((data) => (
               <TableRow
                 key={data.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {data.pizza_name}
+                  {data.name}
                 </TableCell>
                 <TableCell align="right">{data.price}</TableCell>
               </TableRow>
             ))}
-          </TableBody> */}
+          </TableBody> 
         </Table>
       </TableContainer>
 

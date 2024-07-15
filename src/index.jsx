@@ -44,15 +44,40 @@ const type = (state = '', action) => {
   return state;
 }
 
+const pizzaCart = (state = [], action) => {
+    if(action.type === 'ADD_PIZZA') {
+        return [...state,
+                { 
+                    name: action.payload.name,
+                    price: action.payload.price,
+                    id: action.payload.id,
+                    quantity: 1,
+                }]
+    }
+    return state
+}
 
-
+const orderTotal = (state = 0, action) => {
+    
+    if(action.type === 'SET_TOTAL') {
+        return action.payload
+    }
+    
+    return state
+}
 
 
 /** Create store */
 const storeInstance = createStore(
     combineReducers(
         {
-          customerName, customerAddress, customerCity, customerZip, type
+          customerName, 
+          customerAddress, 
+          customerCity, 
+          customerZip, 
+          type,
+          pizzaCart,
+          orderTotal
         }
     ),
     // Setup logger
